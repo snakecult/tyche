@@ -46,3 +46,25 @@ Here's a complete example.
             Tyche.randomize(this); // populate fields annotated with @Randomize
         }
     }
+
+Maven
+=====
+
+Tyche is available via Maven.
+
+    <dependency>
+        <groupId>us.davidandersen.tyche</groupId>
+        <artifactId>tyche</artifactId>
+        <version>0.1-SNAPSHOT</version>
+    </dependency>
+
+    <repositories>
+        <repository>
+            <id>da-public</id>
+            <url>http://artifactory.davidandersen.us/public</url>
+        </repository>
+        <snapshotRepository>
+            <id>da-public-snapshot</id>
+            <url>http://artifactory.davidandersen.us/public-snapshot</url>
+        </snapshotRepository>
+    </repositories>
