@@ -7,7 +7,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
-import us.davidandersen.tyche.Random;
+import us.davidandersen.tyche.RandomHelper;
 import us.davidandersen.tyche.Randomize;
 import us.davidandersen.tyche.Randomizer;
 
@@ -15,7 +15,7 @@ import us.davidandersen.tyche.Randomizer;
 public class RandomizerTest
 {
 	@Mock
-	Random random;
+	RandomHelper random;
 
 	@Mock
 	Randomizer randomizer;

@@ -4,23 +4,23 @@ import java.lang.reflect.Field;
 
 public class Randomizer
 {
-	private final Random random;
+	private final RandomHelper random;
 
 	private final Randomizer randomizer;
 
 	public Randomizer()
 	{
-		random = new Random();
+		random = new RandomHelper();
 		randomizer = this;
 	}
 
-	protected Randomizer(final Random random)
+	protected Randomizer(final RandomHelper random)
 	{
 		this.random = random;
 		randomizer = this;
 	}
 
-	protected Randomizer(final Random random, final Randomizer randomizer)
+	protected Randomizer(final RandomHelper random, final Randomizer randomizer)
 	{
 		this.random = random;
 		this.randomizer = randomizer;

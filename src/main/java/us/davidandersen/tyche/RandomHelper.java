@@ -1,15 +1,17 @@
 package us.davidandersen.tyche;
 
-public class Random
-{
-	private final java.util.Random random;
+import java.util.Random;
 
-	public Random()
+public class RandomHelper
+{
+	private final Random random;
+
+	public RandomHelper()
 	{
-		this(new java.util.Random());
+		this(new Random());
 	}
 
-	public Random(final java.util.Random random)
+	public RandomHelper(final Random random)
 	{
 		this.random = random;
 	}
