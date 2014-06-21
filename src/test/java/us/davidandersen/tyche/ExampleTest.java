@@ -13,6 +13,6 @@ public class ExampleTest
 	@Before
 	public void setUp()
 	{
-		new Randomizer().randomize(this);
+		Tyche.randomize(this);
 	}
 }

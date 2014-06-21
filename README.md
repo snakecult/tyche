@@ -10,22 +10,22 @@ To use Tyche annotate fields in of a test case with the @Randomize annotation.
 
 This will generate a string of the form "user####", where #### is a number between 1000 and 9999.
 
-    @Randomize("user") // output: user####
-    String username;
+    @Randomize("user")
+    String username; // output: user####
 
 If you don't like the default value of 1000 - 9999 you may specify min and max.
 
-    @Randomize("user", min=1, max=9) // output: user#
-    String username;
+    @Randomize(value = "user", min = 1, max = 9)
+    String username; // output: user#
 
 If you want a random number leave out the prefix string.
 
-    @Randomize(min=1, max=100) // output: int between 1 and 100
-    int number;
+    @Randomize(min = 1, max = 100)
+    int number; // output: int between 1 and 100
 
-And finally, call randomize() on the object you want to randomize.
+And finally, call `Tyche.randomize()` on the object you want to randomize.
 
-    new Randomizer().randomize(object); // populate fields annotated with @Randomize
+    Tyche.randomize(object); // populate fields annotated with @Randomize
 
 Example
 =======
@@ -43,6 +43,6 @@ Here's a complete example.
         @Before
         public void setUp()
         {
-            new Randomizer().randomize(this); // populate fields annotated with @Randomize
+            Tyche.randomize(this); // populate fields annotated with @Randomize
         }
     }
