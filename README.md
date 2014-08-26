@@ -1,10 +1,8 @@
-Tyche
-=====
+# Tyche
 
 Tyche is an easy way to create random data for unit tests.
 
-How it Works
-============
+## How it Works
 
 Tyche looks for fields annotated with @Randomize and fills them with random data.
 
@@ -27,8 +25,7 @@ And finally, call Tyche.randomize() on the object you want to randomize.
 
     Tyche.randomize(object); // populate fields annotated with @Randomize
 
-JUnit Example
-=============
+## JUnit Example
 
 In this example test data is randomized by by calling Tyche.randomize().
 
@@ -67,8 +64,7 @@ In this example test data is randomized by by calling Tyche.randomize().
         }
     }
 
-JUnit @Rule Example
-===================
+## JUnit @Rule Example
 
 The JUnit TestRandomizer rule is also available.
 
@@ -87,8 +83,7 @@ The JUnit TestRandomizer rule is also available.
         }
     }
 
-Get Tyche
-=========
+## Get Tyche
 
 Tyche is available via Maven.
 
