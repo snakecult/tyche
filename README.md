@@ -3,10 +3,10 @@ Tyche
 
 Tyche is an easy way to create random data for unit tests.
 
-Usage
-=====
+How it Works
+============
 
-To use Tyche annotate fields in of a test case with the @Randomize annotation.
+Tyche looks for fields annotated with @Randomize and fills them with random data.
 
 This will generate a string of the form "user####", where #### is a number between 1000 and 9999.
 
@@ -23,39 +23,79 @@ If you want a random number leave out the prefix string.
     @Randomize(min = 1, max = 100)
     int number; // output: int between 1 and 100
 
-And finally, call `Tyche.randomize()` on the object you want to randomize.
+And finally, call Tyche.randomize() on the object you want to randomize.
 
     Tyche.randomize(object); // populate fields annotated with @Randomize
 
-Example
-=======
+JUnit Example
+=============
 
-Here's a complete example.
+In this example test data is randomized by by calling Tyche.randomize().
 
+    @RunWith(MockitoJUnitRunner.class)
     public class ExampleTest
     {
-        @Randomize("user")
-        private String username; // will contain "user####"
+        MyController objectUnderTest;
 
-        @Randomize(min = 1000, max = 9999)
-        private int id; // will contain an number between 1000 and 9999
+        @Mock
+        AuthenticationService authenticationService;
+
+        @Randomize("username")
+        private String username;
+
+        @Randomize("password")
+        private String password;
+
+        @Randomize("token")
+        private String token;
 
         @Before
         public void setUp()
         {
-            Tyche.randomize(this); // populate fields annotated with @Randomize
+            Tyche.randomize(this);
+            objectUnderTest = new MyController(service);
+        }
+
+        @Test
+        public void myTest()
+        {
+            when(authenticationService.authenticate(username, password)).thenReturn(token);
+
+            Cookie cookie = objectUnderTest.login(username, password);
+
+            assertThat(cookie.getValue, equalTo(token));
         }
     }
 
-Maven
-=====
+JUnit @Rule Example
+===================
+
+The JUnit TestRandomizer rule is also available.
+
+    public class ExampleTest
+    {
+        @Rule
+        public TestRandomizer testRandomizer = new TestRandomizer(this);
+
+        @Randomize(min = 1000, max = 9999)
+        private int id;
+
+        @Test
+        public void myTest()
+        {
+            // ...
+        }
+    }
+
+Get Tyche
+=========
 
 Tyche is available via Maven.
 
     <dependency>
         <groupId>us.davidandersen.tyche</groupId>
         <artifactId>tyche</artifactId>
-        <version>0.1-SNAPSHOT</version>
+        <version>0.2-SNAPSHOT</version>
     </dependency>
 
     <repositories>
